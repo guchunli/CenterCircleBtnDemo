@@ -1,0 +1,52 @@
+//
+//  PrefixHeader.pch
+//  CenterCircleBtnDemo
+//
+//  Created by cheyifu on 2017/8/2.
+//  Copyright © 2017年 cheyifu. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "MBProgressHUD.h"
+
+#import "YTBViewController.h"
+#import "YTBNavigationController.h"
+#import "FuncTools.h"
+
+#endif
+
+#ifdef DEBUG
+#define YTBLog( s, ... ) NSLog( @"<%@:%s(%d)> %@",  [[NSString stringWithUTF8String:__FILE__] lastPathComponent],__PRETTY_FUNCTION__, __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )//分别是方法地址，文件名，在文件的第几行，自定义输出内容
+#else
+#define YTBLog( s, ... )
+#endif
+
+//width,height适配
+#define kStatusHeight           20
+#define kNavHeight              64
+#define kTabbarHeight           49
+#define KScreenWidth            [UIScreen mainScreen].bounds.size.width
+#define KScreenHeight           ([UIScreen mainScreen].bounds.size.height-kNavHeight)
+#define RatioWidth              KScreenWidth/375
+#define RatioHeight             KScreenHeight/667
+#define RatioFont(fontSize)     [UIFont systemFontOfSize:fontSize*RatioWidth]
+#define RatioBoldFont(fontSize)     [UIFont boldSystemFontOfSize:fontSize*RatioWidth]
+
+//color
+#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+#define RGB(r,g,b) RGBA(r,g,b,1.0f)
+#define COLOR_WITH_HEX(hexValue) [UIColor colorWithRed:((float)((hexValue & 0xFF0000) >> 16)) / 255.0 green:((float)((hexValue & 0xFF00) >> 8)) / 255.0 blue:((float)(hexValue & 0xFF)) / 255.0 alpha:1.0f]
+#define ThemeYellowColor    [UIColor orangeColor]
+#define ThemeBlankColor     COLOR_WITH_HEX(0x3b3a40)
+#define ThemeTextColor      COLOR_WITH_HEX(0x414141)
+#define DarkGrayText        [UIColor darkGrayColor]
+#define LightGrayText       [UIColor lightGrayColor]
+#define ViewBgColor         COLOR_WITH_HEX(0xeeeeee)
+
+#endif /* PrefixHeader_pch */
